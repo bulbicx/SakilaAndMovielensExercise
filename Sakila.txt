@@ -115,4 +115,9 @@ WHERE last_name LIKE '%son'
 ORDER BY first_name;
 
 -- Which category contains the most films?
-SELECT category_id, COUNT(film_id) AS count FROM film_category GROUP BY category_id  ORDER BY count DESC LIMIT 1;
+SELECT fc.category_id, c.name, COUNT(film_id) AS count 
+FROM film_category fc
+JOIN category c ON c.category_id = fc.category_id
+GROUP BY fc.category_id  
+ORDER BY count DESC 
+LIMIT 1;
